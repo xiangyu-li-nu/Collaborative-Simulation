@@ -1,37 +1,55 @@
-# Collaborative Simulation
+# PM2.5 Prediction Framework: Fuzzy Clustering and Dynamic Ensemble Neural Networks
 
-The code repository for the paper *"Collaborative Traffic Signal Control and Path Recommendations Under PM2.5 Exposure Based on Reinforcement Learning."* The project explores reinforcement learning (RL) algorithms to optimize urban traffic signal control, comparing their performance against traditional methods like the Max Pressure (MP) algorithm.
+This repository contains the implementation and data for the research paper **"In-Vehicle PM2.5 Prediction during Commuting Periods Based on Fuzzy Clustering and Dynamically Weighted Neural Networks."** The framework is designed to predict in-vehicle PM2.5 concentrations using advanced ensemble learning techniques that integrate General Regression Neural Networks (GRNN), Convolutional Neural Networks (CNN), and Attention Regressors.
 
-This repository includes implementations of the Deep Q-Learning Network (DQN) and Multi-Agent Advantage Actor-Critic (MA2C) algorithms in traffic simulation environments. It aims to reduce traffic congestion, average waiting times, and CO2 emissions using reinforcement learning techniques.
+---
 
-## Authors
+## Overview
 
-- **Xiangyu Li**, a second-year Ph.D. student in Transportation Engineering at Northwestern University.  
-  **Email:** [xiangyuli2027@u.northwestern.edu](mailto:xiangyuli2027@u.northwestern.edu)
+Urban traffic growth has intensified air pollution, raising public health concerns. This study introduces a novel hybrid ensemble learning framework that combines fuzzy clustering with dynamically weighted neural networks to improve the accuracy and reliability of PM2.5 predictions. The framework effectively captures spatial-temporal variations, enabling actionable insights for urban air quality management and transportation planning.
 
-## Repository Structure
+Key components include:
+- **Fuzzy C-Means Clustering**: Partitions the feature space into subspaces to enable dynamic model weighting.
+- **Dynamic Ensemble Learning**: Integrates GRNN, CNN, and Attention Regressor models with adaptive weights based on subspace-specific errors.
+- **Multi-Dimensional Data**: Utilizes meteorological parameters, traffic conditions, and in-vehicle sensor readings.
 
-### **DQN**
+---
 
-This folder contains the implementation of the Deep Q-Learning Network for traffic signal control:
+## Directory Structure
 
-- `cs.py`: Core script for running simulations and configuring the DQN agents.
-- `main.py`: The main script to start and manage the traffic simulation.
-- `map_config.py`: Defines the traffic network and simulation configuration.
-- `multi_signal.py`: Handles multi-signal interaction for traffic control.
-- `rewards.py`: Defines the reward function for the DQN agents.
-- `signal_config.py`: Configures traffic signal settings.
-- `states.py`: Manages state representation for reinforcement learning.
-- `traffic_signal.py`: Implements the logic for controlling traffic signals in SUMO.
-- `Evaluation.py`: Evaluates the performance of the trained DQN model.
-- `Data recording.csv`: Example output data recorded from simulations.
+### Root Directory
+Contains six main Python scripts for data preparation, analysis, modeling, and integration:
 
-### **ma2c**
+1. **`1.Table Association.py`**: Associates raw data tables to prepare for preprocessing.
+2. **`2.Data preprocessing.py`**: Cleans, normalizes, and formats data for modeling.
+3. **`3.Data analysis and visualisation.py`**: Performs exploratory data analysis and visualizes key insights.
+4. **`4.Machine learning modelling.py`**: Implements individual machine learning models, including GRNN, CNN, and Attention Regressors.
+5. **`5.Integration model.py`**: Combines individual models into a static ensemble framework.
+6. **`6.Dynamic committee integration model.py`**: Implements the dynamic ensemble learning framework using fuzzy clustering.
 
-This folder contains the implementation of the Multi-Agent Advantage Actor-Critic (MA2C) algorithm:
+### `Comparative_experiment/` Directory
+Contains scripts for benchmarking the proposed dynamic ensemble model against baseline methods:
 
-- `agents/`: Implements multi-agent learning logic.
-- `environments/cologne3/`: Contains the SUMO traffic environment setup.
-- `logs/`: Stores training and evaluation logs.
-- `Evaluation.py`: Evaluates the performance of the trained MA2C model.
-- `agent_config.py`: Configures MA2C agent parameters.
+- **`AttentionRegressor.py`**: Implements the Attention Regressor model.
+- **`CNN.py`**: Implements the Convolutional Neural Network model.
+- **`DBN.py`**: Implements the Deep Belief Network model.
+- **`GRNN.py`**: Implements the General Regression Neural Network model.
+- **`LSTM.py`**: Implements the Long Short-Term Memory network.
+- **`RNN.py`**: Implements the Recurrent Neural Network model.
+- **`utils.py`**: Contains utility functions for model evaluation and metrics.
+
+---
+
+## Features
+
+- **Fuzzy Clustering**: Dynamically adjusts model contributions to improve prediction accuracy.
+- **Hybrid Ensemble Learning**: Combines multiple neural networks to leverage their complementary strengths.
+- **Air Quality Insights**: Provides actionable recommendations for mitigating PM2.5 exposure during commutes.
+
+---
+
+## Author
+
+This work was conducted by **Xiangyu Li**, a Ph.D. student in the Department of Civil and Environmental Engineering at Northwestern University. For inquiries or collaborations, contact:
+
+- **Email**: xiangyuli2027@u.northwestern.edu
